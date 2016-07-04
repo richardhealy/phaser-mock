@@ -1,0 +1,19 @@
+{
+  "name": "phaser-mock",
+  "version": "1.0.0",
+  "description": "Stupidest (and fastest) mock of Phaser API for Node.js based unit testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byondreal/phaser-mock.git"
+  },
+  "author": "ByondReal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/byondreal/phaser-mock/issues"
+  },
+  "homepage": "https://github.com/byondreal/phaser-mock#readme"
+}
