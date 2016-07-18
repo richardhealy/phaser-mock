@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/byondreal/phaser-mock/issues"
   },
-  "homepage": "https://github.com/byondreal/phaser-mock#readme"
+  "homepage": "https://github.com/byondreal/phaser-mock#readme",
+  "dependencies": {
+    "tween.js": "^16.3.4"
+  }
 }

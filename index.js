@@ -1,5 +1,9 @@
+var TWEEN = require('tween.js');
+
 var noop = function() {};
 var Phaser = {};
+Phaser.Easing = TWEEN.Easing;
+Phaser.TWEEN = TWEEN;
 Phaser.Game = function(width, height) {
   this.width = width;
   this.height = height;
@@ -15,6 +19,7 @@ Phaser.GameObjectFactory = function() {
   this.audio = function() { return new Phaser.Sound(); };
   this.sprite = function() { return new Phaser.Sprite(); };
   this.group = function() { return new Phaser.Group(); };
+  this.tween = function(obj) { return new Phaser.Tween(obj); }
 };
 Phaser.GameObjectCreator = Phaser.GameObjectFactory;
 Phaser.Sound = function() {
@@ -32,15 +37,22 @@ Phaser.Device = function() {
   this.whenReady = noop;
 };
 Phaser.Signal = function() {
-  this.addOnce = noop;
-  this.add = noop;
-  this.dispatch = noop;
+  var listener;
+  // NOTE: this is different from actual implementation
+  // supports only one handler
+  this.addOnce = this.add = function(cb) { listener = cb; };
+  this.dispatch = function() { if (listener) { listener(); } };
 };
 Phaser.Group = function() {
+  this.x = 0;
+  this.y = 0;
   this.children = [];
   this.add = function(child) { this.children.push(child); };
 };
 Phaser.Sprite = function() {
+  this.x = 0;
+  this.y = 0;
+  this.anchor = { x: 0, y: 0 };
 };
 Phaser.Time = function() {
   this.events = new Phaser.Timer();
@@ -59,6 +71,51 @@ Phaser.Loader = function() {
   this.atlas = noop;
   this.audio = noop;
   this.onLoadComplete = new Phaser.Signal();
+};
+Phaser.Tween = function(obj) {
+  var t = new TWEEN.Tween(obj);
+  var result = {
+    start: function(time) {
+      t.start(time);
+      return result;
+    },
+    to: function(values, duration, easing, delay, repeat, yoyo) {
+      result.vEnd = values;
+      result.duration = duration;
+      result.easingFunction = easing;
+      result.delay = delay;
+      result.repeatTotal = repeat;
+      result.yoyo = yoyo;
+
+      t.to(values, duration);
+      t.easing(easing);
+      t.delay(delay);
+      // TWEEN does not understand repeat === -1
+      t.repeat(repeat === -1 ? 100 : repeat);
+      t.yoyo(yoyo);
+      return result;
+    },
+    onComplete: (function() {
+      var signal = new Phaser.Signal();
+      signal.add = signal.addOnce = function(cb) {
+        t.onComplete(function() { cb(); });
+        signal.dispatch = function() { cb(); };
+      };
+      return signal;
+    }()),
+    onUpdateCallback: function(cb) {
+      t.onUpdate(cb);
+      return result;
+    },
+    stop: function(complete) {
+      t.stop();
+      if (complete) {
+        result.onComplete.dispatch();
+      }
+      return result;
+    }
+  };
+  return result;
 };
 
 module.exports = Phaser;
