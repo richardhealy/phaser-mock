@@ -5,6 +5,10 @@ var Phaser = {};
 Phaser.Easing = TWEEN.Easing;
 Phaser.TWEEN = TWEEN;
 Phaser.Game = function(width, height) {
+  if (typeof width === 'object') {
+    height = width.height;
+    width = width.width;
+  }
   this.width = width;
   this.height = height;
   this.state = new Phaser.StateManager();
@@ -53,6 +57,7 @@ Phaser.Sprite = function() {
   this.x = 0;
   this.y = 0;
   this.anchor = { x: 0, y: 0 };
+  this.loadTexture = noop;
 };
 Phaser.Time = function() {
   this.events = new Phaser.Timer();
@@ -71,6 +76,7 @@ Phaser.Loader = function() {
   this.atlas = noop;
   this.audio = noop;
   this.onLoadComplete = new Phaser.Signal();
+  this.start = noop;
 };
 Phaser.Tween = function(obj) {
   var t = new TWEEN.Tween(obj);
