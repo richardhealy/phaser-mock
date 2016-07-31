@@ -4,13 +4,19 @@ var noop = function() {};
 var Phaser = {};
 Phaser.Easing = TWEEN.Easing;
 Phaser.TWEEN = TWEEN;
-Phaser.Game = function(width, height) {
+Phaser.Game = function(width, height, renderer, parent) {
   if (typeof width === 'object') {
-    height = width.height;
-    width = width.width;
+    var opts = width;
+    height = opts.height;
+    width = opts.width;
+    renderer = opts.renderer;
+    parent = opts.parent;
   }
   this.width = width;
   this.height = height;
+  this.renderer = renderer;
+  this.height = parent;
+
   this.state = new Phaser.StateManager();
   this.device = new Phaser.Device();
   this.add = new Phaser.GameObjectFactory();
