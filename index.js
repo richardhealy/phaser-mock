@@ -15,7 +15,7 @@ Phaser.Game = function(width, height, renderer, parent) {
   this.width = width;
   this.height = height;
   this.renderer = renderer;
-  this.height = parent;
+  this.parent = parent;
 
   this.state = new Phaser.StateManager();
   this.device = new Phaser.Device();
