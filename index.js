@@ -29,7 +29,7 @@ Phaser.GameObjectFactory = function() {
   this.audio = function() { return new Phaser.Sound(); };
   this.sprite = function() { return new Phaser.Sprite(); };
   this.group = function() { return new Phaser.Group(); };
-  this.tween = function(obj) { return new Phaser.Tween(obj); }
+  this.tween = function(obj) { return new Phaser.Tween(obj); };
 };
 Phaser.GameObjectCreator = Phaser.GameObjectFactory;
 Phaser.Sound = function() {
