@@ -129,5 +129,6 @@ Phaser.Tween = function(obj) {
   };
   return result;
 };
+Phaser.Filter = {};
 
 module.exports = Phaser;
