@@ -64,6 +64,8 @@ Phaser.Sprite = function() {
   this.y = 0;
   this.anchor = { x: 0, y: 0 };
   this.loadTexture = noop;
+  this.key = '';
+  this.frame = 0;
 };
 Phaser.Time = function() {
   this.events = new Phaser.Timer();
@@ -129,6 +131,6 @@ Phaser.Tween = function(obj) {
   };
   return result;
 };
-Phaser.Filter = {};
+Phaser.Filter = noop;
 
 module.exports = Phaser;
