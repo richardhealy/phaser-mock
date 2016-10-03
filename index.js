@@ -25,6 +25,9 @@ Phaser.Game = function(width, height, renderer, parent) {
   this.load = new Phaser.Loader();
   this.world = new Phaser.Group();
 };
+Phaser.Text = function () {
+
+};
 Phaser.GameObjectFactory = function() {
   this.audio = function() { return new Phaser.Sound(); };
   this.sprite = function() { return new Phaser.Sprite(); };
@@ -40,6 +43,8 @@ Phaser.Sound = function() {
 };
 Phaser.StateManager = function() {
   this.add = noop;
+  this.create = noop;
+  this.start = noop;
 };
 Phaser.State = function() {
 };
