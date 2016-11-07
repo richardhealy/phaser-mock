@@ -32,6 +32,7 @@ Phaser.GameObjectFactory = function() {
   this.audio = function() { return new Phaser.Sound(); };
   this.sprite = function() { return new Phaser.Sprite(); };
   this.group = function() { return new Phaser.Group(); };
+  this.tilemap = function() { return new Phaser.Tilemap(); };
   this.tween = function(obj) { return new Phaser.Tween(obj); };
 };
 Phaser.GameObjectCreator = Phaser.GameObjectFactory;
@@ -71,6 +72,10 @@ Phaser.Sprite = function() {
   this.loadTexture = noop;
   this.key = '';
   this.frame = 0;
+};
+Phaser.Tilemap = function() {
+  this.addTilesetImage = function() {};
+  this.createLayer = function() {};
 };
 Phaser.Time = function() {
   this.events = new Phaser.Timer();
