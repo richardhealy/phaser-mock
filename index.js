@@ -24,6 +24,8 @@ Phaser.Game = function(width, height, renderer, parent) {
   this.time = new Phaser.Time();
   this.load = new Phaser.Loader();
   this.world = new Phaser.Group();
+
+  this.plugins = new Phaser.Plugins();
 };
 Phaser.Text = function () {
 
@@ -87,6 +89,9 @@ Phaser.Timer = function() {
       fn.apply(ctx, args);
     }, time);
   };
+};
+Phaser.Plugins = function () {
+  this.add = function(plugin) {}
 };
 Phaser.Loader = function() {
   this.baseURL = '';
