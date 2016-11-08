@@ -150,7 +150,7 @@ Phaser.Filter = noop;
 
 // Extending out for Plugins
 Phaser.Plugins = {
-  ArcadeSlopes = function () {}
+  ArcadeSlopes: function () {}
 }
 
 module.exports = Phaser;
