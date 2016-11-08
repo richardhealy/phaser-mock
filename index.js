@@ -25,7 +25,7 @@ Phaser.Game = function(width, height, renderer, parent) {
   this.load = new Phaser.Loader();
   this.world = new Phaser.Group();
 
-  this.plugins = new Phaser.Plugins();
+  this.plugins = new Phaser.PluginsCreator();
 };
 Phaser.Text = function () {
 
@@ -90,7 +90,7 @@ Phaser.Timer = function() {
     }, time);
   };
 };
-Phaser.Plugins = function () {
+Phaser.PluginsCreator = function () {
   this.add = function(plugin) {}
 };
 Phaser.Loader = function() {
@@ -147,5 +147,10 @@ Phaser.Tween = function(obj) {
   return result;
 };
 Phaser.Filter = noop;
+
+// Extending out for Plugins
+Phaser.Plugins = {
+  ArcadeSlopes = function () {}
+}
 
 module.exports = Phaser;
