@@ -149,7 +149,7 @@ Phaser.Tween = function(obj) {
 Phaser.Filter = noop;
 
 // Extending out for Plugins
-Phaser.Plugins = {
+Phaser.Plugin = {
   ArcadeSlopes: function () {}
 }
 
