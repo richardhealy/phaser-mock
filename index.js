@@ -77,7 +77,9 @@ Phaser.Sprite = function() {
 };
 Phaser.Tilemap = function() {
   this.addTilesetImage = function() {};
-  this.createLayer = function() {};
+  this.createLayer = function() {
+    return new Phaser.TilemapLayer();
+  };
 };
 Phaser.TilemapLayer = function() {
   this.resizeWorld = function () {};
