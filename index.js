@@ -79,6 +79,9 @@ Phaser.Tilemap = function() {
   this.addTilesetImage = function() {};
   this.createLayer = function() {};
 };
+Phaser.TilemapLayer = function() {
+  this.resizeWorld = function () {};
+};
 Phaser.Time = function() {
   this.events = new Phaser.Timer();
 };
