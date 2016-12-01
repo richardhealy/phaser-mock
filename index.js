@@ -67,6 +67,9 @@ Phaser.Group = function() {
   this.children = [];
   this.add = function(child) { this.children.push(child); };
 };
+Phaser.ScaleManager = function () {
+  this.SHOW_ALL = true;
+};
 Phaser.Sprite = function() {
   this.x = 0;
   this.y = 0;
