@@ -17,7 +17,7 @@ Phaser.Game = function(width, height, renderer, parent) {
   this.renderer = renderer;
   this.parent = parent;
 
-  this.scale = 0;
+  this.scale = new Phaser.ScaleManager();
   this.state = new Phaser.StateManager();
   this.device = new Phaser.Device();
   this.add = new Phaser.GameObjectFactory();
@@ -69,7 +69,10 @@ Phaser.Group = function() {
   this.add = function(child) { this.children.push(child); };
 };
 Phaser.ScaleManager = function () {
-  this.SHOW_ALL = true;
+  this.EXACT_SIZE = 0;
+  this.SHOW_ALL = 1;
+
+  this.scaleMode = this.EXACT_SIZE;
 };
 Phaser.Sprite = function() {
   this.x = 0;
